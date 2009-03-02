@@ -34,6 +34,10 @@
         </executions>
         <configuration>
           <charset>UTF-8</charset>
+          <args>
+            <arg>-deprecation</arg>
+            <arg>-unchecked</arg>
+          </args>
         </configuration>
       </plugin>
       <plugin>
