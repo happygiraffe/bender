@@ -32,6 +32,16 @@
             </goals>
           </execution>
         </executions>
+        <configuration>
+          <charset>UTF-8</charset>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-resources-plugin</artifactId>
+        <configuration>
+          <encoding>UTF-8</encoding>
+        </configuration>
       </plugin>
     </plugins>
   </build>
