@@ -2,7 +2,7 @@ package net.happygiraffe.bender
 
 class Quotes {
 
-  // Nicked from the list in the Adium bender quotes plugin...
+  // Nicked from the list in the Adium bender quotes plugin.
   val quotes = Array[String](
     "Bite my shiny, metal ass!",
       "Bite my glorious, golden ass!",
@@ -12,7 +12,7 @@ class Quotes {
       "Like most of life's problems, this one can be solved with bending.",
       "Cheese it!",
       "Well, I'm boned.",
-      "Hey, sexy mama...wanna kill all humans?",
+      "Hey, sexy mama… wanna kill all humans?",
       "Oh! Your! God!",
       "He's pending for a bending!",
       "This is the worst kind of discrimination - the kind against me!",
@@ -26,7 +26,7 @@ class Quotes {
       "Oh, no room for Bender, huh? Fine! I'll go build my own lunar lander! With blackjack and hookers! In fact, forget the lunar lander and the blackjack! Ah, screw the whole thing.",
       "I found it in the street! Like all the food I cook.",
       "I can't stand idly by while poor people get free food!",
-      "Congratulations Fry, you've snagged the perfect girlfriend. Amy's rich, she's probably got other characteristics...", "You may need to metaphorically make a deal with the devil. By 'devil' I mean robot devil and by 'metaphorically' I mean get your coat.",
+      "Congratulations Fry, you've snagged the perfect girlfriend. Amy's rich, she's probably got other characteristics…", "You may need to metaphorically make a deal with the devil. By 'devil' I mean robot devil and by 'metaphorically' I mean get your coat.",
       "Boy, who knew a cooler could also make a handy wang coffin?",
       "Call me old fashioned but I like a dump to be as memorable as it is devastating.",
       "My life, and by extension everyone else's is meaningless.",
@@ -50,7 +50,7 @@ class Quotes {
       "Life is hilariously cruel.",
       "Pardon me, brother. Care to donate to the anti-mugging you fund?",
       "I love this planet. I've got wealth, fame, and access to the depths of sleaze that those things bring.",
-      "C'mon, it's just like making love. Y'know, left, down, rotate sixty-two degrees, engage rotors...",
+      "C'mon, it's just like making love. Y'know, left, down, rotate sixty-two degrees, engage rotors…",
       "Oh my God, I'm so excited I wish I could wet my pants.",
       "Argh. The laws of science be a harsh mistress.",
       "In the event of an emergency, my ass can be used as a floatation device.",
