@@ -8,10 +8,12 @@ class Bender extends PircBot {
   setEncoding("UTF-8")
   setFinger("Bite my shiny metal RSS!")
 
+  private val quotes = new Quotes()
+
   override def onMessage(channel: String, sender: String, login: String,
                          hostname: String, message: String) {
     if (message == "!bender") {
-      this.sendMessage(channel, "yeah?")
+      this.sendMessage(channel, quotes.getRandomQuote())
     }
   }
 
