@@ -5,6 +5,7 @@
   <artifactId>bender</artifactId>
   <version>0.1-SNAPSHOT</version>
   <name>${project.artifactId}</name>
+  <description>Bite my shiny metal RSS!</description>
   <dependencies>
     <dependency>
       <groupId>org.scala-lang</groupId>
