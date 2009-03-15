@@ -1,5 +1,7 @@
 package net.happygiraffe.bender
 
+import scala.util.Random
+
 class Quotes {
 
   // Nicked from the list in the Adium bender quotes plugin.
