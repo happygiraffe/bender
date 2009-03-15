@@ -42,7 +42,7 @@
             <!-- For mvn scala:run -->
             <launcher>
               <id>main</id>
-              <mainClass>net.happygiraffe.bender.Main</mainClass>
+              <mainClass>${mainClass}</mainClass>
             </launcher>
           </launchers>
         </configuration>
@@ -73,7 +73,7 @@
                 <configuration>
                   <archive>
                     <manifest>
-                      <mainClass>net.happygiraffe.bender.Main</mainClass>
+                      <mainClass>${mainClass}</mainClass>
                     </manifest>
                   </archive>
                   <descriptorRefs>
@@ -87,4 +87,7 @@
       </build>
     </profile>
   </profiles>
+  <properties>
+    <mainClass>net.happygiraffe.bender.Main</mainClass>
+  </properties>
 </project>
