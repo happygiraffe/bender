@@ -38,6 +38,13 @@
             <arg>-deprecation</arg>
             <arg>-unchecked</arg>
           </args>
+          <launchers>
+            <!-- For mvn scala:run -->
+            <launcher>
+              <id>main</id>
+              <mainClass>net.happygiraffe.bender.Main</mainClass>
+            </launcher>
+          </launchers>
         </configuration>
       </plugin>
       <plugin>
