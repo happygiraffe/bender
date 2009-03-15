@@ -3,7 +3,7 @@ package net.happygiraffe.bender
 import scala.collection.mutable.ListBuffer
 import scala.collection.immutable.TreeSet
 
-class HelpCommand extends Command {
+object HelpCommand extends Command {
   def getDescription() : String =
     "all the commands I understand"
     

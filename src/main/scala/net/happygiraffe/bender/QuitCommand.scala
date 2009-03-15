@@ -1,6 +1,6 @@
 package net.happygiraffe.bender
 
-class QuitCommand extends Command {
+object QuitCommand extends Command {
   def getDescription() : String =
     "stop the bot"
     

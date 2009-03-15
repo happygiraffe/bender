@@ -10,8 +10,8 @@ class Bender extends PircBot {
   setFinger("Bite my shiny metal RSS!")
 
   val commands = Map[String, Command](
-    "help" -> new HelpCommand(),
-    "quit" -> new QuitCommand()
+    "help" -> HelpCommand,
+    "quit" -> QuitCommand
   )
 
   // My name, comma|colon, followed by a word and then anything else.
