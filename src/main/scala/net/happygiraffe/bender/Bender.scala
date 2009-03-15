@@ -1,19 +1,41 @@
 package net.happygiraffe.bender
 
 import org.jibble.pircbot.PircBot
+import scala.util.matching.Regex
 
 class Bender extends PircBot {
-  
+
   setName("bender")
   setEncoding("UTF-8")
   setFinger("Bite my shiny metal RSS!")
+
+  val commands = Map(
+    "help" -> new HelpCommand()
+  )
+
+  // My name, comma|colon, followed by a word and then anything else.
+  val Cmd = new Regex("^(?:" + getName()
+                      + ")[:,]?(?:\\s+(\\w+)(?:\\s+(.*))?)?$")
 
   private val quotes = new Quotes()
 
   override def onMessage(channel: String, sender: String, login: String,
                          hostname: String, message: String) {
-    if (message == "!bender") {
-      this.sendMessage(channel, quotes.getRandomQuote())
+    // Does it look like this message is aimed at us?
+    if ((Cmd findFirstIn message.trim()) == None)
+      return
+    // Funky regex matcher into variables.
+    val Cmd(verb, args) = message.trim()
+    commands.get(verb) match {
+      // If we know about this command, execute it.
+      case Some(action) => {
+        for (line <- action.respond(this, args))
+          sendMessage(channel, line)
+      }
+      // If we've not heard of it, spit out something unhelpful.
+      case None => {
+        sendMessage(channel, quotes.getRandomQuote())
+      }
     }
   }
 
