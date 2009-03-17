@@ -1,6 +1,8 @@
 package net.happygiraffe.bender
 
+import java.net.URI
 import org.jibble.pircbot.PircBot
+import scala.collection.mutable.Set
 import scala.util.matching.Regex
 
 class Bender extends PircBot {
@@ -10,9 +12,14 @@ class Bender extends PircBot {
   setFinger("Bite my shiny metal RSS!")
 
   val commands = Map[String, Command](
-    "help" -> HelpCommand,
-    "quit" -> QuitCommand
+    "help"  -> HelpCommand,
+    "list"  -> ListCommand,
+    "quit"  -> QuitCommand,
+    "watch" -> WatchCommand
   )
+
+  // Feeds to monitor.
+  val feeds = Set[URI]()
 
   // My name, comma|colon, followed by a word and then anything else.
   val Cmd = new Regex("^(?:" + getName()
