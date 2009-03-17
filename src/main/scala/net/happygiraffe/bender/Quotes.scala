@@ -5,7 +5,7 @@ import scala.util.Random
 class Quotes {
 
   // Nicked from the list in the Adium bender quotes plugin.
-  val quotes = Array[String](
+  val quotes = Array(
     "Bite my shiny, metal ass!",
       "Bite my glorious, golden ass!",
       "Bite my shiny, colossal ass!",
