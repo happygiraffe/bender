@@ -23,6 +23,9 @@ object FetchCommand extends Command {
       entries = feed.getEntries.asInstanceOf[java.util.List[SyndEntry]]
       // The implicit defs in jcl.Conversions apply here
       entry <- entries
-    } yield entry.getTitle() + " :: " + entry.getLink()
+    } yield messageFor(entry)
   }
+
+  private def messageFor(entry: SyndEntry) : String =
+    entry.getTitle() + " :: " + entry.getLink()
 }
