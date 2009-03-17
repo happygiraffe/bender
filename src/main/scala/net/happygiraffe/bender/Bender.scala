@@ -12,6 +12,7 @@ class Bender extends PircBot {
   setFinger("Bite my shiny metal RSS!")
 
   val commands = Map[String, Command](
+    "fetch"   -> FetchCommand,
     "help"    -> HelpCommand,
     "list"    -> ListCommand,
     "quit"    -> QuitCommand,
