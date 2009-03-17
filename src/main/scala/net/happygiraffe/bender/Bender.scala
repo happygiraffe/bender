@@ -12,10 +12,11 @@ class Bender extends PircBot {
   setFinger("Bite my shiny metal RSS!")
 
   val commands = Map[String, Command](
-    "help"  -> HelpCommand,
-    "list"  -> ListCommand,
-    "quit"  -> QuitCommand,
-    "watch" -> WatchCommand
+    "help"    -> HelpCommand,
+    "list"    -> ListCommand,
+    "quit"    -> QuitCommand,
+    "unwatch" -> UnwatchCommand,
+    "watch"   -> WatchCommand
   )
 
   // Feeds to monitor.
