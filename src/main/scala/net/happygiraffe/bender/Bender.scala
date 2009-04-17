@@ -50,6 +50,6 @@ class Bender extends PircBot {
   }
 
   override def onDisconnect {
-    System.exit(0);
+    exit();
   }
 }
