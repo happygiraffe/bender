@@ -11,6 +11,9 @@ class Bender extends PircBot {
   setEncoding("UTF-8")
   setFinger("Bite my shiny metal RSS!")
 
+  val feeder = new Feeder(this)
+  feeder.start()
+
   val commands = Map[String, Command](
     "fetch"   -> FetchCommand,
     "help"    -> HelpCommand,
@@ -20,14 +23,11 @@ class Bender extends PircBot {
     "watch"   -> WatchCommand
   )
 
-  // Feeds to monitor.
-  val feeds = Set[URI]()
-
   // My name, comma|colon, followed by a word and then anything else.
   val Cmd = new Regex("^(?:" + getName()
                       + ")[:,]?(?:\\s+(\\w+)(?:\\s+(.*))?)?$")
 
-  private val quotes = new Quotes()
+  private final val quotes = new Quotes()
 
   override def onMessage(channel: String, sender: String, login: String,
                          hostname: String, message: String) {
