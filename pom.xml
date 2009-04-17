@@ -7,6 +7,15 @@
   <version>0.1-SNAPSHOT</version>
   <name>${project.artifactId}</name>
   <description>Bite my shiny metal RSS!</description>
+  <repositories>
+    <repository>
+      <id>java.net</id>
+      <url>http://download.java.net/maven/2/</url>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </repository>
+  </repositories>
   <dependencies>
     <dependency>
       <groupId>org.scala-lang</groupId>
@@ -31,7 +40,9 @@
   </dependencies>
   <dependencyManagement>
     <dependencies>
-      <!-- This is pulled in by rome-test.  Update version to avoid bad junit dep. -->
+      <!--
+        This is pulled in by rome-test. Update version to avoid bad junit dep.
+      -->
       <dependency>
         <groupId>commons-httpclient</groupId>
         <artifactId>commons-httpclient</artifactId>
