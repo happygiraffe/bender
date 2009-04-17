@@ -25,7 +25,7 @@ class Bender extends PircBot {
 
   // My name, comma|colon, followed by a word and then anything else.
   val Cmd = new Regex("^(?:" + getName()
-                      + ")[:,]?(?:\\s+(\\w+)(?:\\s+(.*))?)?$")
+                      + ")[:,]?(?:\\s+(\\S+)(?:\\s+(.*))?)?$")
 
   private final val quotes = new Quotes()
 
