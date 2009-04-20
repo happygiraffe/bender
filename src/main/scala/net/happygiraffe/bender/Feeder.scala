@@ -18,16 +18,16 @@ class Feeder(bot: Bender) extends Actor {
   private final val feedInfoCache = HashMapFeedInfoCache.getInstance()
   private final val fetcher = new HttpURLFeedFetcher(feedInfoCache)
 
-  private final val feeds = mutable.Set[URI]()
+  private final val feeds = mutable.Set[WatchedFeed]()
 
-  def watch(feed: URI) : Unit = feeds += feed
+  def watch(feed: WatchedFeed) : Unit = feeds += feed
 
-  def unwatch(feed: URI) : Unit = feeds -= feed
+  def unwatch(feed: WatchedFeed) : Unit = feeds -= feed
 
   /**
    * Return an immutable set of URIs being monitored.
    */
-  def list(): Set[URI] = Set.empty ++ feeds
+  def list(): Set[WatchedFeed] = Set.empty ++ feeds
 
   /**
    * Retrieve the contents of a feed.  Sadly, Rome only supports URLs, not URIs.
@@ -45,8 +45,8 @@ class Feeder(bot: Bender) extends Actor {
    * Fetch all feeds
    */
   private def fetch(): Unit = {
-    for (feedUri <- feeds; entry <- feedEntries(fetchFeed(feedUri)))
-      bot.messenger ! ("message", messageFor(entry))
+    for (watchedFeed <- feeds; entry <- feedEntries(fetchFeed(watchedFeed.uri)))
+      bot.messenger ! ("message", watchedFeed, messageFor(entry))
   }
 
   private def messageFor(entry: SyndEntry) : String =
@@ -56,10 +56,10 @@ class Feeder(bot: Bender) extends Actor {
   def act() {
     loop {
       react {
-        case ("watch", feed: URI)   => watch(feed)
-        case ("unwatch", feed: URI) => unwatch(feed)
-        case "list"                 => reply(list())
-        case "fetch"                => fetch()
+        case ("watch", feed: WatchedFeed)   => watch(feed)
+        case ("unwatch", feed: WatchedFeed) => unwatch(feed)
+        case "list"                         => reply(list())
+        case "fetch"                        => fetch()
       }
     }
   }

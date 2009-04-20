@@ -12,7 +12,7 @@ object WatchCommand extends Command {
       return List("watch what exactly?")
     try {
       val uri = new URI(args.trim().split("\\s+")(0))
-      bot.feeder ! ("watch", uri)
+      bot.feeder ! ("watch", WatchedFeed(channel, uri))
       return List("okey-dokey")
     } catch {
       case ex: URISyntaxException =>

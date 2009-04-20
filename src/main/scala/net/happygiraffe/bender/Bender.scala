@@ -20,8 +20,8 @@ class Bender extends PircBot {
   val messenger = actor {
     loop {
       react {
-        // XXX hard coded channel
-        case ("message", msg: String) => sendMessage("#chat", msg)
+        case ("message", wf: WatchedFeed, msg: String) =>
+          sendMessage(wf.channel, msg)
       }
     }
   }
