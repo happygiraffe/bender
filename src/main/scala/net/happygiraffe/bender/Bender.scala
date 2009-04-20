@@ -2,6 +2,7 @@ package net.happygiraffe.bender
 
 import java.net.URI
 import org.jibble.pircbot.PircBot
+import scala.actors.Actor._
 import scala.collection.mutable.Set
 import scala.util.matching.Regex
 
@@ -11,8 +12,19 @@ class Bender extends PircBot {
   setEncoding("UTF-8")
   setFinger("Bite my shiny metal RSS!")
 
+  // For managing feeds.
   val feeder = new Feeder(this)
   feeder.start()
+
+  // For sending messages.
+  val messenger = actor {
+    loop {
+      react {
+        // XXX hard coded channel
+        case ("message", msg: String) => sendMessage("#chat", msg)
+      }
+    }
+  }
 
   val commands = Map[String, Command](
     "fetch"   -> FetchCommand,
