@@ -51,7 +51,7 @@ class Bender extends PircBot {
     commands.get(verb) match {
       // If we know about this command, execute it.
       case Some(action) => {
-        for (line <- action.respond(this, args))
+        for (line <- action.respond(this, channel, args))
           sendMessage(channel, line)
       }
       // If we've not heard of it, spit out something unhelpful.

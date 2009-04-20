@@ -7,7 +7,7 @@ object WatchCommand extends Command {
   def getDescription() : String =
     "start monitoring a feed"
 
-  def respond(bot: Bender, args: String) : Iterable[String] = {
+  def respond(bot: Bender, channel: String, args: String) : Iterable[String] = {
     if (args == null || args == "")
       return List("watch what exactly?")
     try {

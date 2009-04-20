@@ -7,7 +7,7 @@ object ListCommand extends Command {
   def getDescription() : String =
     "list all monitored feeds"
 
-  def respond(bot: Bender, args: String) : Iterable[String] = {
+  def respond(bot: Bender, channel: String, args: String) : Iterable[String] = {
     // This is interesting…  "!?" returns Any, so we have to match to find out
     // If we're the right type.  Except that we can't say Set[URI] thanks to
     // marvellous erasure.

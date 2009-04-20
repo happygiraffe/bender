@@ -7,7 +7,7 @@ object UnwatchCommand extends Command {
   def getDescription() : String =
     "stop monitoring a feed"
 
-  def respond(bot: Bender, args: String) : Iterable[String] = {
+  def respond(bot: Bender, channel: String, args: String) : Iterable[String] = {
     if (args == null || args == "")
       return List("sure...")
     try {
