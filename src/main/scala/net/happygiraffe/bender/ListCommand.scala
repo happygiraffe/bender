@@ -16,8 +16,8 @@ object ListCommand extends Command {
         if (feeds.isEmpty)
           return List("I'm not listening to any feeds.")
         else
-          for (feed <- feeds)
-            yield feed.toString()
+          for (feed <- feeds.asInstanceOf[Set[WatchedFeed]])
+            yield feed.uri.toString()
       case x => return List("I sure didn't expect to see a " + x)
     }
   }
