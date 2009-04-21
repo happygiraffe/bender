@@ -65,7 +65,7 @@
           </execution>
         </executions>
         <configuration>
-          <charset>UTF-8</charset>
+          <charset>${project.build.sourceEncoding}</charset>
           <args>
             <arg>-deprecation</arg>
             <arg>-unchecked</arg>
