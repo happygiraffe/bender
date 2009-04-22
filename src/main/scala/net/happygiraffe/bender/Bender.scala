@@ -2,7 +2,7 @@ package net.happygiraffe.bender
 
 import java.net.URI
 import org.jibble.pircbot.PircBot
-import scala.actors.Actor._
+import scala.actors.Actor.{actor,loop,react}
 import scala.collection.mutable.Set
 import scala.util.matching.Regex
 
