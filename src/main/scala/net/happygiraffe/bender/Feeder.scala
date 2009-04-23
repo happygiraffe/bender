@@ -15,6 +15,19 @@ import scala.collection.mutable
  * Background class for managing the bot's feeds
  */
 class Feeder(bot: Bender) extends Actor {
+  val periodSeconds = 60 * 60;
+  private def periodicFetch() {
+    val feeder = self
+    actor {
+      loop {
+        Thread.sleep(periodSeconds * 1000)
+        feeder ! "fetch"
+      }
+    }
+  }
+  // Fire off a periodic fetch.
+  periodicFetch()
+
   private final val feedInfoCache = HashMapFeedInfoCache.getInstance()
   private final val fetcher = new HttpURLFeedFetcher(feedInfoCache)
 
