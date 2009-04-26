@@ -15,6 +15,7 @@ class Bender extends PircBot {
   // For managing feeds.
   val feeder = new Feeder(this)
   feeder.start()
+  feeder ! "init"
 
   // For sending messages.
   val messenger = actor {

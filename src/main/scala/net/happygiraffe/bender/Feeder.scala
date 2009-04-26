@@ -25,8 +25,6 @@ class Feeder(bot: Bender) extends Actor {
       }
     }
   }
-  // Fire off a periodic fetch.
-  periodicFetch()
 
   private final val feedInfoCache = HashMapFeedInfoCache.getInstance()
   private final val fetcher = new HttpURLFeedFetcher(feedInfoCache)
@@ -73,6 +71,7 @@ class Feeder(bot: Bender) extends Actor {
         case ("unwatch", feed: WatchedFeed) => unwatch(feed)
         case "list"                         => reply(list())
         case "fetch"                        => fetch()
+        case "init"                         => periodicFetch()
       }
     }
   }
