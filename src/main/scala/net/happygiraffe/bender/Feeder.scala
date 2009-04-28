@@ -14,7 +14,7 @@ import scala.collection.mutable
 /**
  * Background class for managing the bot's feeds
  */
-class Feeder(bot: Bender) extends Actor {
+class Feeder(messenger: Actor) extends Actor {
   val periodSeconds = 60 * 60;
   private def periodicFetch() {
     val feeder = self
@@ -57,7 +57,7 @@ class Feeder(bot: Bender) extends Actor {
    */
   private def fetch(): Unit = {
     for (watchedFeed <- feeds; entry <- feedEntries(fetchFeed(watchedFeed.uri)))
-      bot.messenger ! ("message", watchedFeed, messageFor(entry))
+      messenger ! ("message", watchedFeed, messageFor(entry))
   }
 
   private def messageFor(entry: SyndEntry) : String =

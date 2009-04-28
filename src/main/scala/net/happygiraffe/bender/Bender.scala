@@ -12,11 +12,6 @@ class Bender extends PircBot {
   setEncoding("UTF-8")
   setFinger("Bite my shiny metal RSS!")
 
-  // For managing feeds.
-  val feeder = new Feeder(this)
-  feeder.start()
-  feeder ! "init"
-
   // For sending messages.
   val messenger = actor {
     loop {
@@ -26,6 +21,11 @@ class Bender extends PircBot {
       }
     }
   }
+
+  // For managing feeds.
+  val feeder = new Feeder(messenger)
+  feeder.start()
+  feeder ! "init"
 
   val commands = Map[String, Command](
     "fetch"   -> FetchCommand,
