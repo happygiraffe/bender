@@ -31,14 +31,14 @@ class Feeder(bot: Bender) extends Actor {
 
   private final val feeds = mutable.Set[WatchedFeed]()
 
-  def watch(feed: WatchedFeed) : Unit = feeds += feed
+  private def watch(feed: WatchedFeed) : Unit = feeds += feed
 
-  def unwatch(feed: WatchedFeed) : Unit = feeds -= feed
+  private def unwatch(feed: WatchedFeed) : Unit = feeds -= feed
 
   /**
    * Return an immutable set of URIs being monitored.
    */
-  def list(): Set[WatchedFeed] = Set.empty ++ feeds
+  private def list(): Set[WatchedFeed] = Set.empty ++ feeds
 
   /**
    * Retrieve the contents of a feed.  Sadly, Rome only supports URLs, not URIs.
