@@ -26,8 +26,8 @@ class Feeder(messenger: Actor) extends Actor {
     }
   }
 
-  private final val feedInfoCache = HashMapFeedInfoCache.getInstance()
-  private final val fetcher = new HttpURLFeedFetcher(feedInfoCache)
+  private final val fetcher =
+    new HttpURLFeedFetcher(HashMapFeedInfoCache.getInstance())
 
   private final val feeds = mutable.Set[WatchedFeed]()
 
