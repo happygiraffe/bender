@@ -25,7 +25,6 @@ class Bender extends PircBot {
   // For managing feeds.
   val feeder = new Feeder(messenger)
   feeder.start()
-  feeder ! "init"
 
   val commands = Map[String, Command](
     "fetch"   -> FetchCommand,

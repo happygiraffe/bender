@@ -63,6 +63,16 @@ class Feeder(messenger: Actor) extends Actor {
   private def messageFor(entry: SyndEntry) : String =
     entry.getTitle() + " :: " + entry.getLink()
 
+  /**
+   * Override for initialisation.
+   */
+  override def start(): Actor = {
+      val rv = super.start()
+      // NB: Have to use "this" rather than "self" as that returns an
+      // ActorProxy at this point in time.
+      this ! "init"
+      rv
+  }
 
   def act() {
     loop {
