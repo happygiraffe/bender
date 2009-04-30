@@ -87,6 +87,10 @@
             <launcher>
               <id>main</id>
               <mainClass>${mainClass}</mainClass>
+              <!--
+                I have no idea why this doesn't work. It looks like the
+                compiler args are taking precendence...
+              -->
               <args>
                 <arg>bender.properties</arg>
               </args>
