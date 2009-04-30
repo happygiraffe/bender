@@ -36,6 +36,13 @@
       <groupId>rome</groupId>
       <artifactId>rome-fetcher</artifactId>
       <version>1.0</version>
+      <exclusions>
+        <!-- We already have commons-logging available -->
+        <exclusion>
+          <groupId>commons-logging</groupId>
+          <artifactId>commons-logging-api</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
   </dependencies>
   <dependencyManagement>
