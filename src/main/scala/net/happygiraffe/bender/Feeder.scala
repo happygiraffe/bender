@@ -31,6 +31,8 @@ class Feeder(messenger: Actor) extends Actor {
 
   private final val feeds = mutable.Set[WatchedFeed]()
 
+  private final val seenEntries = mutable.Set[String]()
+
   private def watch(feed: WatchedFeed) : Unit = feeds += feed
 
   private def unwatch(feed: WatchedFeed) : Unit = feeds -= feed
@@ -53,11 +55,24 @@ class Feeder(messenger: Actor) extends Actor {
     feed.getEntries.asInstanceOf[java.util.List[SyndEntry]]
 
   /**
+   * Have we seen this entry before?  If you ask about an entry, we record it
+   * as seen.
+   */
+  private def seen(entry: SyndEntry) : Boolean = {
+    val rv = seenEntries.contains(entry.getUri())
+    seenEntries += entry.getUri
+    rv
+  }
+
+  /**
    * Fetch all feeds
    */
   private def fetch(): Unit = {
-    for (watchedFeed <- feeds; entry <- feedEntries(fetchFeed(watchedFeed.uri)))
-      messenger ! ("message", watchedFeed, messageFor(entry))
+    for {
+      watchedFeed <- feeds
+      entry <- feedEntries(fetchFeed(watchedFeed.uri))
+      if !seen(entry)
+    } messenger ! ("message", watchedFeed, messageFor(entry))
   }
 
   private def messageFor(entry: SyndEntry) : String =
