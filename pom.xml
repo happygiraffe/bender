@@ -7,6 +7,11 @@
   <version>0.1-SNAPSHOT</version>
   <name>${project.artifactId}</name>
   <description>Bite my shiny metal RSS!</description>
+  <scm>
+    <url>http://github.com/happygiraffe/bender</url>
+    <connection>scm:git:git://github.com/happygiraffe/bender.git</connection>
+    <developerConnection>scm:git:ssh://git@github.com/happygiraffe/bender.git</developerConnection>
+  </scm>
   <repositories>
     <repository>
       <id>java.net</id>
