@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>net.happygiraffe</groupId>
   <artifactId>bender</artifactId>
-  <version>0.1</version>
+  <version>0.2-SNAPSHOT</version>
   <name>${project.artifactId}</name>
   <description>Bite my shiny metal RSS!</description>
   <scm>
