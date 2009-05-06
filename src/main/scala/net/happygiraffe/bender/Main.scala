@@ -8,9 +8,9 @@ object Main {
 
   def main(args: Array[String]) = {
     val cf = new CompositeConfiguration()
-    cf.append(defaultConfiguration())
     if (args.length > 0)
       cf.append(new PropertiesConfiguration(args(0)))
+    cf.append(defaultConfiguration())
 
     val bot = new Bender()
     bot.setVerbose(cf.getBoolean("verbose", true))
