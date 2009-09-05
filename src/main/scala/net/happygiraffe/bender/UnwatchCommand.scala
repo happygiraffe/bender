@@ -12,7 +12,7 @@ object UnwatchCommand extends Command {
       return List("sure...")
     try {
       val uri = new URI(args.trim().split("\\s+")(0))
-      bot.feeder ! ("unwatch", WatchedFeed(channel, uri))
+      bot.feeder ! UnwatchFeed(WatchedFeed(channel, uri))
       return List("I never saw a thing!")
     } catch {
       case ex: URISyntaxException =>

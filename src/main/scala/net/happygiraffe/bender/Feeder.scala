@@ -11,6 +11,12 @@ import scala.actors.Actor._
 import scala.collection.jcl.Conversions._
 import scala.collection.mutable
 
+case class InitFeeder()
+case class FetchFeeds()
+case class ListFeeds()
+case class WatchFeed(wf: WatchedFeed)
+case class UnwatchFeed(wf: WatchedFeed)
+
 /**
  * Background class for managing the bot's feeds
  */
@@ -21,7 +27,7 @@ class Feeder(messenger: Actor) extends Actor {
     actor {
       loop {
         Thread.sleep(periodSeconds * 1000)
-        feeder ! "fetch"
+        feeder ! FetchFeeds
       }
     }
   }
@@ -85,18 +91,18 @@ class Feeder(messenger: Actor) extends Actor {
       val rv = super.start()
       // NB: Have to use "this" rather than "self" as that returns an
       // ActorProxy at this point in time.
-      this ! "init"
+      this ! InitFeeder
       rv
   }
 
   def act() {
     loop {
       react {
-        case ("watch", feed: WatchedFeed)   => watch(feed)
-        case ("unwatch", feed: WatchedFeed) => unwatch(feed)
-        case "list"                         => reply(list())
-        case "fetch"                        => fetch()
-        case "init"                         => periodicFetch()
+        case WatchFeed(feed)   => watch(feed)
+        case UnwatchFeed(feed) => unwatch(feed)
+        case ListFeeds         => reply(list())
+        case FetchFeeds        => fetch()
+        case InitFeeder        => periodicFetch()
       }
     }
   }

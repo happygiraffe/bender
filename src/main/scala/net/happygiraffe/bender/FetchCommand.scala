@@ -5,7 +5,7 @@ object FetchCommand extends Command {
     "go and fetch all the feeds being monitored"
 
   def respond(bot: Bender, channel: String, args: String) : Iterable[String] = {
-    bot.feeder ! "fetch"
+    bot.feeder ! FetchFeeds
     return List()
   }
 }

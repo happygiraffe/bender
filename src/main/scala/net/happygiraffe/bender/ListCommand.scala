@@ -11,7 +11,7 @@ object ListCommand extends Command {
     // This is interesting…  "!?" returns Any, so we have to match to find out
     // If we're the right type.  Except that we can't say Set[URI] thanks to
     // marvellous erasure.
-    bot.feeder !? "list" match {
+    bot.feeder !? ListFeeds match {
       case feeds: Set[_] =>
         if (feeds.isEmpty)
           return List("I'm not listening to any feeds.")
